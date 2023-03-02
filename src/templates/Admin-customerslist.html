@@ -1,0 +1,175 @@
+
+<html lang="en">
+  <head>
+    
+    <!-- Vendors styles-->
+    <link rel="stylesheet" href="../static/vendors/simplebar/css/simplebar.css">
+    <link rel="stylesheet" href="../static/css/vendors/simplebar.css">
+    <!-- Main styles for this application-->
+    <link href="../static/css/style.css" rel="stylesheet">
+    
+   
+  
+  </head>
+  <body>
+    <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
+      <div class="sidebar-brand d-none d-md-flex">
+        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+          <use xlink:href="assets/brand/coreui.svg#full"></use>
+        </svg>
+        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
+          <use xlink:href="assets/brand/coreui.svg#signet"></use>
+        </svg>
+      </div>
+      <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
+        <li class="nav-item"><a class="nav-link" href="/adminh">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
+            </svg> Dashboard</a></li>
+        <li class="nav-title">Theme</li>
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+            </svg> Events</a>
+                  <ul class="nav-group-items">
+                        <li class="nav-item"><a class="nav-link" href="/addeventsp">
+                          <svg class="nav-icon">
+                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
+                          </svg>Add Events</a>
+                        </li>
+                  </ul>
+                  <ul class="nav-group-items">
+                    <li class="nav-item"><a class="nav-link" href="/viewEvents">
+                      <svg class="nav-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
+                      </svg>View Events</a>
+                    </li>
+                 </ul>
+        </li>
+
+        <li class="nav-group">
+          <a class="nav-link nav-group-toggle" href="#">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+            </svg>Vendors</a>
+            <ul class="nav-group-items">
+                  <li class="nav-item"><a class="nav-link" href="/addcenter">
+                    <svg class="nav-icon">
+                      <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
+                    </svg> Add Centre</a>
+                  </li>
+            </ul>
+            <ul class="nav-group-items">
+              <li class="nav-item"><a class="nav-link" href="/addcenter">
+                <svg class="nav-icon">
+                  <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
+                </svg>View</a>
+              </li>
+        </ul>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="/customerslist">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+            </svg> Customer Management</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/contactlist">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+            </svg>Contacts Report </a>
+        </li>
+      
+        <li class="nav-item"><a class="nav-link" href=".html">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+            </svg>All Bookings</a>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link" href="/logout">
+            <svg class="nav-icon">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+            </svg>Logout</a>
+        </li>
+      </ul>
+      <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
+    </div>
+
+
+
+
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+      <header class="header header-sticky mb-4">
+        <div class="container-fluid">
+          <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <svg class="icon icon-lg">
+              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+            </svg>
+          </button>
+          <a class="header-brand d-md-none" href="index.html">
+            <svg width="118" height="46" alt="CoreUI Logo">
+              <use xlink:href="assets/brand/coreui.svg#full"></use>
+            </svg></a>
+          <ul class="header-nav d-none d-md-flex">
+            <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Users</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Settings</a></li>
+          </ul>
+        </div>
+        <div class="header-divider"></div>
+      </header>
+      <section>
+        <div class="container">
+          <div class="row">    
+            <form >
+              <table class="table col-6" align="center" style="width: 45em;" >
+                <thead class="table-dark">
+                    <th>LoginId</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Email</th>
+                    <th>Delete User</th>
+
+                </thead>
+                {% for i in val %} 
+                <tbody> 
+                  
+                  <tr>
+                    <td>{{i['lid']}}</td>
+                    <td>{{i['username']}}</td>
+                    <td>{{i['password']}}</td>
+                    <td>{{i['email']}}</td>
+                    <td><a  style="text-decoration:none;" class="control-forms" type="submit" href="/deleteUser?ID={{i['lid']}}">Delete</a></td>
+                  </tr>
+                
+                </tbody>
+                {% endfor %}
+              </table>
+            </form>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+
+      
+      <footer class="footer ">
+        <div class="mx-auto">
+          @Copyright2023
+        </div>
+      </footer>
+    </div>
+    
+    <!-- CoreUI and necessary plugins-->
+    <script src="../static/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="../static/vendors/simplebar/js/simplebar.min.js"></script>
+   
+    <script>
+    </script>
+
+  </body>
+</html>
