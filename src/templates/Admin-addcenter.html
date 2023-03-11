@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="../static/css/vendors/simplebar.css">
     <!-- Main styles for this appliction-->
     <link href="../static/css/style.css" rel="stylesheet">
-    
+    <title>EMS ADMIN</title>
+
     
   </head>
   <body>
@@ -60,10 +61,10 @@
                   </li>
             </ul>
             <ul class="nav-group-items">
-              <li class="nav-item"><a class="nav-link" href="/addcenter">
+              <li class="nav-item"><a class="nav-link" href="/viewVenues">
                 <svg class="nav-icon">
                   <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
-                </svg>View</a>
+                </svg>View Venues</a>
               </li>
         </ul>
         </li>
@@ -116,20 +117,14 @@
       </header>
       
       <section>
-        <div>
-            <h3 class="">ADD CENTERS</h3>
-            <hr>
-        </div>
-
-
-        <div class="container">
+          <div class="container">
             <div class="row">
                 <!-- basic form start -->
                  <form method="post" action="/insert" enctype="multipart/form-data">
                 <div class="col-12" align="center">
                     <div class="card"  style="width: 48em;">
                         <div class="card-body">
-                            <h4 class="header-title">Basic form</h4>
+                            <h4 class="header-title">ADD VENUE</h4>
 
 
                                 <div class="row form-group">
@@ -137,7 +132,7 @@
                                     <label >Location</label>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control"  placeholder="" name="textfield1" required>
+                                    <input type="text" class="form-control"  name="textfield1" required>
                                    
                                     </div>
                                 </div>
@@ -147,7 +142,7 @@
                                         <label >Center Name</label>
                                         </div>
                                         <div class="col-md-8">
-                                        <input type="text" class="form-control"placeholder=" " name="textfield2" required>
+                                        <input type="text" class="form-control" name="textfield2" required>
                                         </div>
                                 </div>
 
@@ -156,7 +151,7 @@
                                     <label >Booking Price</label>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control"  placeholder=" "name="textfield3" required>
+                                    <input type="text" class="form-control" name="textfield3" required>
                                     </div>
                                 </div>
 
@@ -165,7 +160,7 @@
                                     <label >Contact No</label>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="text" class="form-control" placeholder=" "name="textfield4" required>
+                                    <input type="text" class="form-control" name="textfield4" required>
                                     </div>
                                 </div>
 
@@ -175,17 +170,10 @@
                                     <label >Email address</label>
                                     </div>
                                     <div class="col-md-8">
-                                    <input type="email" class="form-control"  placeholder=" "name="textfield5" required>
+                                    <input type="email" class="form-control" name="textfield5" required>
                                     </div>
                                 </div>
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-auto">
-                                    <label >Total Capacity</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control"   placeholder=" "name="textfield6" required>
-                                    </div>
-                                </div>
+                               
                                 <div class="row form-group mt-3">
                                     <div class="col-md-3 my-top">
                                     <label >Center description</label>
@@ -199,7 +187,7 @@
                                   <label >Image</label>
                                   </div>
                                   <div class="col-md-8">
-                                  <input type="file" class="form-control"  placeholder=" "name="files" multiple required>
+                                  <input type="file" class="form-control"  name="files" multiple required>
                                   </div>
                               </div>                                
                                 <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Submit" name="submit">

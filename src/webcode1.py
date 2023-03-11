@@ -24,7 +24,7 @@ mail = Mail(app)
 # calling login page
 @app.route("/", methods=['get', 'post'])
 def main():
-    return render_template("admin-home.html")
+    return render_template("login.html")
 # ------------------------------------------------------------------------
 # calling logout page
 @app.route("/logout", methods=['get', 'post'])
@@ -60,6 +60,9 @@ def addeventsp():
 
 
 
+
+
+
 # ------------------------------------------------------------------------
 # calling contact page
 @app.route("/contact", methods=['post', 'get'])
@@ -77,6 +80,31 @@ def userdash():
     return render_template("user-userdash.html")
 
 
+
+
+
+
+
+
+# ------------------------------------------------------------------------
+# calling admin-edit venue  page
+@app.route("/editvenuepage", methods=['post', 'get'])
+def editvenuepage():
+    id=request.args.get('ID')
+    qry = "SELECT * FROM `halls` WHERE hid=%s"
+    val1=(id)
+    res=selectone(qry,val1)
+    return render_template("Admin-editvenue.html",val=res)
+
+# ------------------------------------------------------------------------
+# calling viewVenue page and show all added venues
+@app.route("/viewVenues", methods=['post', 'get'])
+def viewVenues():
+    qry = "SELECT * FROM halls"
+    res = selectall(qry)
+
+    return render_template("Admin-viewVenues.html", val=res)
+
 # ------------------------------------------------------------------------
 # calling admin-editevent  page
 @app.route("/editeventpage", methods=['post', 'get'])
@@ -89,7 +117,7 @@ def editeventpage():
     return render_template("Admin-editevent.html",val1=res)
 
 # ------------------------------------------------------------------------
-# calling contact list page and show all the enquiries users
+# calling viewEvents page and show all added events
 @app.route("/viewEvents", methods=['post', 'get'])
 def viewEvents():
     qry = "SELECT * FROM events"
@@ -129,6 +157,16 @@ def customerslist():
     qry = "SELECT * FROM login,signup where login.lid=signup.lid"
     res = selectall(qry)
     return render_template("Admin-customerslist.html", val=res)
+# ------------------------------------------------------------------------
+# calling eventcustomize page
+@app.route("/customize", methods=['post', 'get'])
+def customize():
+    id=request.args.get('ID')
+    session['eventid1']=id
+    qry = "SELECT * FROM `events` WHERE eventid=%s"
+    val=(id)
+    res=selectone(qry,val)
+    return render_template("user-eventcustomize.html",val=res)
 
 
 
@@ -191,15 +229,14 @@ def insert():
     bprice = request.form['textfield3']
     phone = request.form['textfield4']
     email = request.form['textfield5']
-    capacity = request.form['textfield6']
     decri = request.form['textfield7']
     image = request.files['files']
 
     fn = datetime.now().strftime("%Y%m%d%H%M%S") + ".jpg"
     image.save("static/images/" + fn)
 
-    qry = "INSERT INTO halls VALUES(NULL,%s,%s,%s,%s,%s,%s,%s,%s)"
-    val = (location, name, bprice, phone, email, capacity, decri, fn)
+    qry = "INSERT INTO halls VALUES(NULL,%s,%s,%s,%s,%s,%s,%s)"
+    val = (location, name, bprice, phone, email, decri, fn)
     res = iud(qry, val)
     return '''<script> alert('Successfully Added');window.location="/adminh"</script>'''
 
@@ -329,6 +366,68 @@ def editevent():
     val=(eventtype,description,fn,session['eventid'])
     res=iud(qry, val)
     return '''<script> alert('data Updated');window.location="/viewEvents"</script>'''
+# ------------------------------------------------------------------------
+# inserting event_customize details into databese 
+@app.route("/insertcustomize", methods=['post', 'get'])
+def insertcustomize():
+    id = request.form['id']
+    catering = request.form['catering']
+    ac = request.form['ac']
+    stage = request.form['stage']
+    count = request.form['count']
+    time = request.form['time']
+   
+
+
+    qry = "INSERT INTO customize VALUES(NULL,%s,%s,%s,%s,%s,%s,%s)"
+    val = (session['lid'],id,catering, ac, stage, count, time)
+    res = iud(qry, val)
+    return '''<script> alert('Successfully saved  Now! You Can Select Your Favorate Venue ');window.location="/allhalls"</script>'''
+# ------------------------------------------------------------------------
+# edit venues in admin panel
+# calling update function in admin panel
+@app.route("/editvenue",methods=['post','get']) # edit button action in admin panel
+def editvenue():
+    location = request.form['textfield1']
+    name = request.form['textfield2']
+    bprice = request.form['textfield3']
+    phone = request.form['textfield4']
+    email = request.form['textfield5']
+    capacity = request.form['textfield6']
+    decri = request.form['textfield7']
+    image = request.files['files']
+
+    fn = datetime.now().strftime("%Y%m%d%H%M%S") + ".jpg"
+    image.save("static/images/venues/" + fn)
+
+
+
+    qry="UPDATE `halls` SET `location`=%s,`name`=%s ,bprice=%s ,phone=%s ,email=%s ,capacity=%s ,decri=%s ,image=%s   where hid=%s"
+    val=(location,name,bprice,phone,fn,email,capacity,decri,session['hid'])
+    res=iud(qry, val)
+    return '''<script> alert('data Updated');window.location="/viewVenues"</script>'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

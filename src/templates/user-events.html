@@ -45,27 +45,25 @@
       <div class="col-lg-4 col-md-4 col-4"><hr></div>	
     </div>
   </section>
-
+  <!-- style="height:202px;width:350px"  -->
    <section>
     <div class="container">
       <div class="row">
         <!--Datas from /userevetns or events table-->
           {% for i in val %}
-        <div class="card mb-3 ml-4 col-10 container col-md-4" style="max-width: 540px; ">
+        <div class="card mb-3  col-10  col-md-3  container" style="max-width: 540px; ">
           <div class="row no-gutters">
-            <div class="" style="margin-top:1em;">
-            <img src="../static/images/event/{{i['image']}}" class="card-img" alt="...">
-            </div>
-            <div class="">
-            <div class="card-body">
-              <hr>
-              <h5 class="card-title">{{i['eventtype']}}</h5>
-              <p class="card-text">{{i['description']}}</p>
-              <div align="right"><input class="btn btn-rounded btn-info mb-3" type="submit" value="more info"></div>
-
-            </div>  
-
-            </div>
+                <div class=" col-12" style="margin-top:1em;">
+                <img src="../static/images/event/{{i['image']}}" class="card-img" >
+                </div>
+            <div class="col-md-12">
+                  <div class="card-body">
+                    <hr>
+                    <h5 class="card-title">{{i['eventtype']}}</h5>
+                    <p class="card-text">{{i['description']}}</p>
+                    <div align="right"> <a href="/customize?ID={{i['eventid']}}" ><input class="btn btn-rounded btn-info mb-3" type="submit" value="more info"><a/></div>
+                 </div> 
+             </div>
           </div>
           </div>
           {% endfor %}

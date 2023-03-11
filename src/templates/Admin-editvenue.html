@@ -5,12 +5,11 @@
     <!-- Vendors styles-->
     <link rel="stylesheet" href="../static/vendors/simplebar/css/simplebar.css">
     <link rel="stylesheet" href="../static/css/vendors/simplebar.css">
-    <!-- Main styles for this application-->
+    <!-- Main styles for this appliction-->
     <link href="../static/css/style.css" rel="stylesheet">
     <title>EMS ADMIN</title>
 
-   
-  
+    
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -96,9 +95,6 @@
       <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
 
-
-
-
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <header class="header header-sticky mb-4">
         <div class="container-fluid">
@@ -119,37 +115,96 @@
         </div>
         <div class="header-divider"></div>
       </header>
+      
       <section>
-        <div class="container">
-          <div class="row">    
-            <form >
-              <table class="table col-6" align="center" style="width: 45em;" >
-                <thead class="table-dark">
-                    <th>LoginId</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Delete User</th>
+       
 
-                </thead>
-                <!-- values from login and signup table or /contactlist-->
-                {% for i in val %} 
-                <tbody> 
-                  
-                  <tr>
-                    <td>{{i['lid']}}</td>
-                    <td>{{i['username']}}</td>
-                    <td>{{i['password']}}</td>
-                    <td>{{i['email']}}</td>
-                    <td><a  style="text-decoration:none;" class="control-forms" type="submit" href="/deleteUser?ID={{i['lid']}}">Delete</a></td>
-                  </tr>
-                
-                </tbody>
-                {% endfor %}
-              </table>
-            </form>
-          </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- basic form start -->
+                 <form method="post" action="/editvenue" enctype="multipart/form-data">
+                <div class="col-12" align="center">
+                    <div class="card"  style="width: 48em;">
+                        <div class="card-body">
+                            <h4 class="header-title">Update Venue</h4>
+
+
+                                <div class="row form-group">
+                                    <div class="col-md-3 my-auto">
+                                    <label >Location</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control"   name="textfield1" value="{{val['location']}}" required >
+                                   
+                                    </div>
+                                </div>
+
+                                <div class="row form-group mt-3">
+                                    <div class="col-md-3 my-auto">
+                                        <label >Center Name</label>
+                                        </div>
+                                        <div class="col-md-8">
+                                        <input type="text" class="form-control" name="textfield2"value="{{val['name']}}" required>
+                                        </div>
+                                </div>
+
+                                <div class="row form-group mt-3">
+                                    <div class="col-md-3 my-auto">
+                                    <label >Booking Price</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control"  name="textfield3"value="{{val['bprice']}}" required>
+                                    </div>
+                                </div>
+
+                                <div class="row form-group mt-3">
+                                    <div class="col-md-3 my-auto">
+                                    <label >Contact No</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <input type="text" class="form-control" name="textfield4"value="{{val['phone']}}" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="row form-group mt-3">
+                                    <div class="col-md-3 my-auto">
+                                    <label >Email address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                    <input type="email" class="form-control"value="{{val['email']}}"  name="textfield5" required>
+                                    </div>
+                                </div>
+                              
+                                <div class="row form-group mt-3">
+                                    <div class="col-md-3 my-top">
+                                    <label >Center description</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                      <textarea class="form-control"  name="textfield7" style="height: 5em;"name="textfield7" required>{{val['descri']}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="row form-group mt-3">
+                                  <div class="col-md-3 my-auto">
+                                  <label >Image</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                  <input type="file" class="form-control"  name="files" multiple required>
+                                  </div>
+                              </div>                                
+                                <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Submit" name="submit">
+                        </div>
+                    </div>
+                </div>
+               </form>
+                <!-- basic form end -->
+            </div>
         </div>
+
+
+
+
       </section>
 
 
@@ -165,11 +220,12 @@
         </div>
       </footer>
     </div>
-    
     <!-- CoreUI and necessary plugins-->
     <script src="../static/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="../static/vendors/simplebar/js/simplebar.min.js"></script>
-   
+    <!-- Plugins and scripts required by this view-->
+    <script src="../static/vendors/@coreui/utils/js/coreui-utils.js"></script>
+    <script src="../static/js/colors.js"></script>
     <script>
     </script>
 
