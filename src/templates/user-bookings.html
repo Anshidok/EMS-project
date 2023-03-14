@@ -22,7 +22,7 @@
             <li class="nav-item"><a href="/userh" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="/userevetns" class="nav-link">Events</a></li>
 	          <li class="nav-item"><a href="/allhalls" class="nav-link">All Venues</a></li>
-            <li class="nav-item active"><a href="/bookindetails" class="nav-link">Bookings</a></li>
+            <li class="nav-item active"><a href="/bookingdetails" class="nav-link">Bookings</a></li>
             <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -65,7 +65,7 @@
                 <th>Customer Name</td>
               </tr>
               <tr>
-                <th>Booking</td>
+                <th>Customer Email</td>
               </tr>
               </tbody>
               </table>
@@ -74,13 +74,13 @@
               <table   class="table  col-md-3 col-6">
                 <tbody>
                   <tr>                 
-                    <td  >Ohtto</td> 
+                    <td  >{{val1['bkid']}}</td> 
                   </tr>
                   <tr>
-                    <td  >Otto</td>
+                    <td  >{{val1['cname']}}</td>
                   </tr>
                   <tr>
-                    <td  >Otto</td>
+                    <td  >{{val1['cemail']}}</td>
                   </tr>
                 </tbody>
               </table>
@@ -101,20 +101,20 @@
               <table   class="table  col-md-3 col-6">
                 <tbody>
                   <tr>                 
-                    <td  >Otto</td> 
+                    <td >{{val1['date']}}</td> 
                   </tr>
                   <tr>
-                    <td  >Otto</td>
+                    <td >{{val2['bprice']}}</td>
                   </tr>
                   <tr>
-                    <td  >Otto</td>
+                    <td >{{val1['cphone']}}</td>
                   </tr>
                 </tbody>
               </table>
                
             </div>
             <h4 style="margin-top: 2em;"><b>Booking Items</b></h4>
-        <div class="row " style="">
+        <div class="row ">
 
             <table class="table  " >           
               <tbody>
@@ -127,12 +127,12 @@
                   <th>Booking Cost</th>
                 </tr>
                 <tr>
-                  <td>f</td>
-                  <td>f</td>
-                  <td>f</td>
-                  <td>f</td>
-                  <td>f</td>
-                  <td>f</td>
+                  <td>{{val2['hid']}}</td>
+                  <td></td>
+                  <td>{{val2['name']}}</td>
+                  <td>{{val2['phone']}}</td>
+                  <td>{{val2['email']}}</td>
+                  <td>{{val2['bprice']}}</td>
                 </tr>                       
               </tbody>
               </table>
@@ -141,15 +141,15 @@
               
             </div>
             </div>
-             
-       
+             <button type="submit"class="form-control bg-info col-md-3 divcenter" ><strong>Pay Bill </strong> </button>
+    
  </section>
 
 
 	
 
 
-    <footer class="footer mt-5 text-center text-white" style="background-color: #f1f1f1;">
+    <footer class=" mt-5 text-center text-white" style="background-color: #f1f1f1;">
     <div class="container pt-4">
       <section class="mb-4">
         <a

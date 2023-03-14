@@ -24,7 +24,7 @@ mail = Mail(app)
 # calling login page
 @app.route("/", methods=['get', 'post'])
 def main():
-    return render_template("user-bookings.html")
+    return render_template("login.html")
 # ------------------------------------------------------------------------
 # calling logout page
 @app.route("/logout", methods=['get', 'post'])
@@ -78,6 +78,16 @@ def userh():
 @app.route("/userdash", methods=['post', 'get'])
 def userdash():
     return render_template("user-userdash.html")
+# ------------------------------------------------------------------------
+# calling morrinfo  page
+@app.route("/more", methods=['post', 'get'])
+def more():
+    id = session['hid']
+
+    qry = "SELECT * FROM halls WHERE hid=%s"
+    val = (id)
+    res = selectone(qry, val)
+    return render_template("user-moreinfo.html", vall=res)
 
 
 
@@ -169,13 +179,18 @@ def customize():
 
 # ------------------------------------------------------------------------
 # calling booking details show page
-@app.route("/bookindetails", methods=['post', 'get'])
+@app.route("/bookingdetails", methods=['post', 'get'])
 def bookindetails():
-    # id=request.args.get('ID')
-    # qry = "SELECT * FROM `halls` WHERE hid=%s"
-    # val1=(id)
-    # res=selectone(qry,val1)
-    return render_template("user-bookings.html")
+    id=session['hid']
+    qry = "SELECT * FROM `halls` WHERE hid=%s"
+    val=(id)
+    res=selectone(qry,val)
+
+    id=session['lid']
+    qry = "SELECT * FROM `bookings` WHERE lid=%s"
+    val=(id)
+    res1=selectone(qry,val)
+    return render_template("user-bookings.html",val1=res1,val2=res)
 # ------------------------------------------------------------------------
 # calling booking page
 @app.route("/book", methods=['post', 'get'])
@@ -297,7 +312,7 @@ def smail():
     qry = "INSERT INTO contact VALUES(NULL,%s,%s,%s,%s,%s)"
     val = (session['lid'], name, email, subject, message)
     res = iud(qry, val)
-    print(res)
+   
     return '''<script> alert('Your Message Sended Successfully');window.location="/contact"</script>'''
 
 
@@ -339,14 +354,15 @@ def deleteUser():
 @app.route("/venuecheck", methods=['post', 'get'])
 def hallcheck():
 
-    date1 = request.form['checkdate']
+    bdate = request.form['checkdate']
+    session['bdate'] = bdate
     qry = "INSERT INTO datecheck VALUES (%s,%s,%s)"
-    val = (session['lid'],session['hid'],date1)
+    val = (session['lid'],session['hid'],bdate)
 
-    res = iud(qry,val)
-    print(date1)
+    iud(qry,val)
+ 
 
-    return '''<script> alert('');window.location="/bookindetails"</script>'''
+    return '''<script> alert('In This Date Venue is availabe');window.location="/more"</script>'''
 
 
 # ------------------------------------------------------------------------
@@ -442,6 +458,26 @@ def editvenue():
     val=(location,name,bprice,phone,fn,email,capacity,decri,session['hid'])
     res=iud(qry, val)
     return '''<script> alert('data Updated');window.location="/viewVenues"</script>'''
+# ------------------------------------------------------------------------
+# booking function
+@app.route("/booking", methods=['post', 'get'])
+def booking():
+    if request.method == "POST":
+        name = request.form['name']
+        phone = request.form['ph']
+        email = request.form['email']
+        place = request.form['place']
+        date = session['bdate']
+    message="Thank you for booking"   
+    msg = Message("Hai" + name , recipients=[email])
+    msg.body = message
+    mail.send(msg)
+
+    qry = "INSERT INTO bookings VALUES(NULL,%s,%s,%s,%s,%s,%s,%s)"
+    val = (session['lid'],session['hid'], name,phone, email, place,date)
+    res = iud(qry, val)
+    
+    return '''<script> alert('Succesfully booked');window.location="/bookingdetails"</script>'''
 
 
 
