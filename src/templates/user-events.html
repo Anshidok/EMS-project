@@ -3,14 +3,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../static/css/style1.css">
+    <title>EMS | USER</title>
 
 </head>
 <body class="dbody">
-    <section>
-		
+    
+	<section>
 		<header style=" position:fixed; width: 100%; z-index: 1;">
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container-fluid">
@@ -18,11 +18,12 @@
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
+	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-	        	<li class="nav-item active"><a href="/userh" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="/userevetns" class="nav-link">Events</a></li>
-	          <li class="nav-item"><a href="/allhalls" class="nav-link">All Halls</a></li>
+            <li class="nav-item "><a href="/userh" class="nav-link">Home</a></li>
+	        	<li class="nav-item active"><a href="/userevetns" class="nav-link">Events</a></li>
+	          <li class="nav-item"><a href="/allhalls" class="nav-link">All Venues</a></li>
+            <li class="nav-item"><a href="/bookindetails" class="nav-link">Bookings</a></li>
             <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -32,43 +33,40 @@
                </div>
             </li>
 	          <li class="nav-item"><a href="/logout" class="nav-link">logout</a></li>
-
 	       	 </ul>
 	     		 </div>
 	   		 </div>
 	  		</nav>
 		</header>
     <!-- END nav -->
+	</section>
+    
+  <section>
     <div class="row tm-section-header section-margin-top" style="padding-top:5em; border: none;" >
       <div class="col-lg-4 col-md-4 col-4"><hr></div>
       <div align="center"class="col-lg-4 col-md-4 col-4"><h2 class="tm-section-title">Events</h2></div>
       <div class="col-lg-4 col-md-4 col-4"><hr></div>	
     </div>
   </section>
-  <!-- style="height:202px;width:350px"  -->
-   <section>
+
+  <section>
     <div class="container">
       <div class="row">
-        <!--Datas from /userevetns or events table-->
-          {% for i in val %}
-        <div class="card mb-3  col-10  col-md-3  container" style="max-width: 540px; ">
-          <div class="row no-gutters">
-                <div class=" col-12" style="margin-top:1em;">
-                <img src="../static/images/event/{{i['image']}}" class="card-img" >
-                </div>
-            <div class="col-md-12">
-                  <div class="card-body">
-                    <hr>
-                    <h5 class="card-title">{{i['eventtype']}}</h5>
-                    <p class="card-text">{{i['description']}}</p>
-                    <div align="right"> <a href="/customize?ID={{i['eventid']}}" ><input class="btn btn-rounded btn-info mb-3" type="submit" value="more info"><a/></div>
-                 </div> 
-             </div>
-          </div>
-          </div>
-          {% endfor %}
-
-           
+                <!--Datas from /userevetns or events table-->
+        {% for i in val %}
+            <div class="card ml-5 mt-5" style="width: 18rem;">
+              <img src="../static/images/event/{{i['image']}}" class="card-img-top" style="margin-top:1em;" >
+              <div class="card-body">
+                <hr>
+                <h5 class="card-title">{{i['eventtype']}}</h5>
+                <p class="card-text">{{i['description']}}</p>
+                <a href="/customize?ID={{i['eventid']}}" class="btn btn-primary">More info</a>
+              </div>
+            </div>
+        {% endfor %}
+        
+       
+        
       </div>
     </div>
   </section>
@@ -86,12 +84,10 @@
 
 
 
-
-
 	
 
 
-    <footer class=" mt-5 text-center text-white" style="background-color: #f1f1f1;">
+    <footer class="foote mt-5 text-center text-white" style="background-color: #f1f1f1;">
     <div class="container pt-4">
       <section class="mb-4">
         <a

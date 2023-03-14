@@ -19,7 +19,7 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav m-auto">
-            <li class="nav-item "><a href="/userh" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/userh" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="/userevetns" class="nav-link">Events</a></li>
 	          <li class="nav-item"><a href="/allhalls" class="nav-link">All Venues</a></li>
             <li class="nav-item"><a href="/bookindetails" class="nav-link">Bookings</a></li>
@@ -41,10 +41,10 @@
 	</section>
     
   
-    <section style="background-image: url(../static/images/event-management-dissertation-topics.jpg); width: 100%; height:829px;">
+    <section style="background-image: url(../static/images/eventsbook.jpg); width: 100%; height:829px;">
     <div class="row tm-section-header section-margin-top" style="padding-top:5em; border: none; "  >
       <div               class="col-lg-4 col-md-4 col-3"><hr class="hrline"></div>
-      <div align="center"class="col-lg-4 col-md-4 col-6"><h4 class="tm-section-title" style="color: aliceblue;">Customize Your {{val['eventtype']}}</h4></div>
+      <div align="center"class="col-lg-4 col-md-4 col-6"><h4 class="tm-section-title" style="color: aliceblue;">Book Your {{val1['eventtype']}} in {{val['name']}}</h4></div>
       <div               class="col-lg-4 col-md-4 col-3"><hr class="hrline"></div>	
     </div>
   
@@ -56,11 +56,19 @@
       <div class="container">
         <div class="row">
 
-                <div class="card col-10 col-md-10 customizecardcenter">
+                <div class="card col-10 col-md-6 divcenter">
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Event Id</label>
-                      <input type="text" class="form-control" id="exampleInputPassword1" value="{{val['eventid']}}" name="id">
+                      <label for="exampleInputPassword1">Name</label>
+                      <input type="text" class="form-control" id="exampleInputPassword1"  name="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Phone</label>
+                      <input type="tel" class="form-control" id="exampleInputPassword1"  name="name">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Email</label>
+                      <input type="email" class="form-control" id="exampleInputPassword1"  name="name">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" >Catering Service</label>

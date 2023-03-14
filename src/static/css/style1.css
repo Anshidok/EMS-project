@@ -1,7 +1,23 @@
+.divcenter{
+  margin:  0 auto 0 auto ;
+}
+.footer {
+  position: fixed;
+  z-index: 1500;
+  bottom: 0;
+  width: 100%;
+}
+.hrline:not([size]) {
+  height: 5px;
+  border-radius: 10px; 
+  background-color: white;
+}
 
-
-
-
+.customizecardcenter{
+  height: 36em;
+  margin-top: 40px;
+  margin-left: 9%;
+}
 
 
 :root {

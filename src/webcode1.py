@@ -24,12 +24,12 @@ mail = Mail(app)
 # calling login page
 @app.route("/", methods=['get', 'post'])
 def main():
-    return render_template("login.html")
+    return render_template("user-bookings.html")
 # ------------------------------------------------------------------------
 # calling logout page
 @app.route("/logout", methods=['get', 'post'])
 def logout():
-    session.pop('email', None)
+    session.pop('lid', None)
     return render_template("login.html")
 # ------------------------------------------------------------------------
 # calling signup page
@@ -78,7 +78,6 @@ def userh():
 @app.route("/userdash", methods=['post', 'get'])
 def userdash():
     return render_template("user-userdash.html")
-
 
 
 
@@ -162,11 +161,41 @@ def customerslist():
 @app.route("/customize", methods=['post', 'get'])
 def customize():
     id=request.args.get('ID')
-    session['eventid1']=id
+    session['eventid']=id
     qry = "SELECT * FROM `events` WHERE eventid=%s"
     val=(id)
     res=selectone(qry,val)
     return render_template("user-eventcustomize.html",val=res)
+
+# ------------------------------------------------------------------------
+# calling booking details show page
+@app.route("/bookindetails", methods=['post', 'get'])
+def bookindetails():
+    # id=request.args.get('ID')
+    # qry = "SELECT * FROM `halls` WHERE hid=%s"
+    # val1=(id)
+    # res=selectone(qry,val1)
+    return render_template("user-bookings.html")
+# ------------------------------------------------------------------------
+# calling booking page
+@app.route("/book", methods=['post', 'get'])
+def book():
+    id=session['hid']
+    qry = "SELECT * FROM `halls` WHERE hid=%s"
+    val=(id)
+    res=selectone(qry,val)
+
+    id1=session['eventid']
+    qry1 = "SELECT * FROM `events` WHERE eventid=%s"
+    val1=(id1)
+    res1=selectone(qry1,val1)
+    
+    return render_template("user-book.html",val=res,val1=res1)
+
+
+
+
+
 
 
 
@@ -306,11 +335,18 @@ def deleteUser():
 
 
 # ------------------------------------------------------------------------
-@app.route("/hallcheck", methods=['post', 'get'])
+#date chech=king  foe venue in user side
+@app.route("/venuecheck", methods=['post', 'get'])
 def hallcheck():
+
     date1 = request.form['checkdate']
+    qry = "INSERT INTO datecheck VALUES (%s,%s,%s)"
+    val = (session['lid'],session['hid'],date1)
+
+    res = iud(qry,val)
     print(date1)
-    return '''<script> alert('Your Message Sended Successfully');window.location="/userh"</script>'''
+
+    return '''<script> alert('');window.location="/bookindetails"</script>'''
 
 
 # ------------------------------------------------------------------------
