@@ -40,10 +40,17 @@
     <!-- END nav -->
 	</section>
     
+  <section>
+    <div class="row tm-section-header section-margin-top" style="padding-top:5em; border: none;" >
+      <div class="col-lg-4 col-md-4 col-4"><hr></div>
+      <div align="center"class="col-lg-4 col-md-4 col-4"><h2 class="tm-section-title">Venues</h2></div>
+      <div class="col-lg-4 col-md-4 col-4"><hr></div>	
+    </div>
+  </section>
 
     <section>
         <div class="container">
-            <div class="row" style="padding-top:5em; border: none;">
+            <div class="row" >
 
               {% for i in val %}
 
@@ -51,7 +58,7 @@
               <form method="post" action="">
                 <div class="card" >
                   
-                  <img src="../static/images/{{i['image']}}" class="card-img-top" alt="..." style="height: 13em;">
+                  <img src="../static/images/venues/{{i['image']}}" class="card-img-top" alt="..." style="height: 13em;">
                   <div class="card-body">
                     <h5 class="card-title">{{i['name']}}</h5>
                     <p class="card-text">{{i['descri']}}</p>

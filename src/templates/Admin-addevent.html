@@ -17,28 +17,25 @@
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
       <div class="sidebar-brand d-none d-md-flex">
-        <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-          <use xlink:href="assets/brand/coreui.svg#full"></use>
-        </svg>
-        <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-          <use xlink:href="assets/brand/coreui.svg#signet"></use>
-        </svg>
+        <H4 style="margin-left: -2em;">ADMIN</H4>
       </div>
       <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
-        <li class="nav-item"><a class="nav-link" href="/adminh">
+        <li class="nav-item">
+          <a class="nav-link " href="/adminh">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-            </svg> Dashboard</a></li>
+              <use > <i class="fa-solid fa-grid-horizontal" style="margin-left: -2em;margin-right: 1em"></i></use>
+            </svg> Dashboard</a>
+          </li>
         <li class="nav-title">Theme</li>
         <li class="nav-group">
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
+              <use><i class="fa-solid fa-calendar-days" style="margin-left: -2em;margin-right: 1em"></i></use>
             </svg> Events</a>
                   <ul class="nav-group-items">
                         <li class="nav-item"><a class="nav-link" href="/addeventsp">
                           <svg class="nav-icon">
-                            <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
+                            <use><i class="fa-solid fa-calendar-circle-plus"></i></use>
                           </svg>Add Events</a>
                         </li>
                   </ul>
@@ -54,12 +51,11 @@
         <li class="nav-group">
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
-            </svg>Vendors</a>
+              <use ><i class="fa-solid fa-location-dot" style="margin-left: -2em;margin-right: 1em"></i></use>
+            </svg>Venues</a>
             <ul class="nav-group-items">
                   <li class="nav-item"><a class="nav-link" href="/addcenter">
                     <svg class="nav-icon">
-                      <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
                     </svg> Add Centre</a>
                   </li>
             </ul>
@@ -67,31 +63,31 @@
               <li class="nav-item"><a class="nav-link" href="/viewVenues">
                 <svg class="nav-icon">
                   <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-drop"></use>
-                </svg>View Venes</a>
+                </svg>View Venues</a>
               </li>
         </ul>
         </li>
         
         <li class="nav-item"><a class="nav-link" href="/customerslist">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+              <use ><i  class="fa-solid fa-users" style="margin-left: -35px; margin-right: 11px;"></i></use>
             </svg> Customer Management</a>
         </li>
         <li class="nav-item"><a class="nav-link" href="/contactlist">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+              <use ><i class="fa-solid fa-address-book" style="margin-left: -2em;margin-right: 1em"></i></use>
             </svg>Contacts Report </a>
         </li>
       
-        <li class="nav-item"><a class="nav-link" href=".html">
+        <li class="nav-item"><a class="nav-link" href="/allbookings">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+              <use ><i class="fa-solid fa-bookmark" style="margin-left: -2em;margin-right: 1em"></i></use>
             </svg>All Bookings</a>
         </li>
         
         <li class="nav-item"><a class="nav-link" href="/logout">
             <svg class="nav-icon">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-pencil"></use>
+              <use ><i class="fa-solid fa-right-from-bracket" style="margin-left: -2em;margin-right: 1em"></i></use>
             </svg>Logout</a>
         </li>
       </ul>
@@ -100,13 +96,12 @@
 
 
 
-
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
       <header class="header header-sticky mb-4">
         <div class="container-fluid">
           <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
             <svg class="icon icon-lg">
-              <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-menu"></use>
+              <i class="fa-solid fa-bars"></i>
             </svg>
           </button>
           <a class="header-brand d-md-none" href="index.html">
@@ -187,9 +182,7 @@
     <!-- CoreUI and necessary plugins-->
     <script src="../static/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="../static/vendors/simplebar/js/simplebar.min.js"></script>
-   
-    <script>
-    </script>
+    <script src="https://kit.fontawesome.com/fe0c06db7b.js" crossorigin="anonymous"></script>
 
   </body>
 </html>
