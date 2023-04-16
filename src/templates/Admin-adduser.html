@@ -1,15 +1,14 @@
-
 <html lang="en">
   <head>
-    
+ 
     <!-- Vendors styles-->
     <link rel="stylesheet" href="../static/vendors/simplebar/css/simplebar.css">
     <link rel="stylesheet" href="../static/css/vendors/simplebar.css">
-    <!-- Main styles for this appliction-->
+    <!-- Main styles for this application-->
     <link href="../static/css/style.css" rel="stylesheet">
     <title>EMS | ADMIN</title>
 
-    
+ 
   </head>
   <body>
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
@@ -26,10 +25,10 @@
           
         <li class="nav-title">Theme</li>
         <li class="nav-item"><a class="nav-link" href="/addvenueuser">
-          <svg class="nav-icon">
-            <use ><i  class="fa-solid fa-users" style="margin-left: -35px; margin-right: 11px;"></i></use>
-          </svg>Add User</a>
-      </li>
+            <svg class="nav-icon">
+              <use ><i  class="fa-solid fa-users" style="margin-left: -35px; margin-right: 11px;"></i></use>
+            </svg>Add User</a>
+        </li>
         <li class="nav-group">
           <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">
@@ -119,94 +118,90 @@
         </div>
         <div class="header-divider"></div>
       </header>
-      
       <section>
-          <div class="container">
-            <div class="row">
-                <!-- basic form start -->
-                 <form method="post" action="/insert" enctype="multipart/form-data">
-                <div class="col-12" >
-                    <div class="card divcenter"  style="width: 48em;">
-                        <div class="card-body">
-                            <h4 class="header-title">ADD VENUE</h4>
+        <div class="container p-4 col-md-9">
+            <table class="table">
+                <caption>Showing 1 to   entries</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">LoginID      </th>
+                    <th scope="col">Username    </th>
+                    <th scope="col">Password   </th>
+                    <th scope="col">Type   </th>
+                    <!-- <th scope="col">Edit   </th> -->
+                    <th scope="col">Delete   </th>
+                  </tr>
+                </thead>
+                {% for i in val %}
+                  <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{i['lid']}}  </td>
+                    <td>{{i['username']}} </td>
+                    <td>{{i['password']}}</td>
+                    <td>{{i['type']}}</td>
+                    <!-- <td><a href="/show"  target="1"><input type="button" value="Edit" class="btn btn-warning"></td></a> -->
+                    <td><a href="/Delete?ID={{i['lid']}}"><input type="button" value="Delete" class="btn btn-danger"></td></a>
+                  </tr>   
+                                    
+                {% endfor%}                      
+              </table>
+              
+          </div>
+      </section>
+      <section>
+        <div class="container">
+          <div class="row">
+              <!-- basic form start -->
+               <form method="post" action="/addvenueuseracc" enctype="multipart/form-data">
+              <div class="col-12" >
+                  <div class="card divcenter"  style="width: 48em;">
+                      <div class="card-body">
+                          <h4 class="header-title">Add Venue Account</h4>
 
 
-                                <div class="row form-group">
-                                    <div class="col-md-3 my-auto">
-                                    <label >Location</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control"  name="textfield1" required>
-                                   
-                                    </div>
-                                </div>
-
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-auto">
-                                        <label >Center Name</label>
-                                        </div>
-                                        <div class="col-md-8">
-                                        <input type="text" class="form-control" name="textfield2" required>
-                                        </div>
-                                </div>
-
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-auto">
-                                    <label >Booking Price</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" name="textfield3" required>
-                                    </div>
-                                </div>
-
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-auto">
-                                    <label >Contact No</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                    <input type="text" class="form-control" name="textfield4" required>
-                                    </div>
-                                </div>
-
-
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-auto">
-                                    <label >Email address</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                    <input type="email" class="form-control" name="textfield5" required>
-                                    </div>
-                                </div>
-                               
-                                <div class="row form-group mt-3">
-                                    <div class="col-md-3 my-top">
-                                    <label >Center description</label>
-                                    </div>
-                                    <div class="col-md-8">
-                                      <textarea class="form-control"  name="textfield7" style="height: 5em;"name="textfield7" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="row form-group mt-3">
+                              <div class="row form-group">
                                   <div class="col-md-3 my-auto">
-                                  <label >Image</label>
+                                  <label >Username</label>
                                   </div>
                                   <div class="col-md-8">
-                                  <input type="file" class="form-control"  name="files" multiple required>
+                                  <input type="text" class="form-control"  name="textfield1" required>
+                                 
                                   </div>
-                              </div>                                
-                                <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Submit" name="submit">
-                        </div>
-                    </div>
-                </div>
-               </form>
-                <!-- basic form end -->
-            </div>
-        </div>
+                              </div>
 
+                              <div class="row form-group mt-3">
+                                  <div class="col-md-3 my-auto">
+                                      <label >Password</label>
+                                      </div>
+                                      <div class="col-md-8">
+                                      <input type="password" class="form-control" name="textfield2" required>
+                                      </div>
+                              </div>
 
+                              <div class="row form-group mt-3">
+                                  <div class="col-md-3 my-auto">
+                                  <label >Login Type</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                  <input type="text" class="form-control" name="textfield3" value="venue" required>
+                                  </div>
+                              </div>
+                              <div >
+                                <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="ADD" name="submit">
+                              </div>                                                                              
+                      </div>
+                  </div>
+              </div>
+             </form>
+              <!-- basic form end -->
+          </div>
+      </div>
+    </section>
+    <section>
+      <iframe src="" name="1" frameborder="0" style="width: 100%; height: 23em;"></iframe>
+    </section>
 
-
-      </section>
 
 
 
@@ -215,19 +210,20 @@
 
 
       
-      <footer class="footer ">
+      <footer>
         <div class="mx-auto">
           @Copyright2023
         </div>
       </footer>
     </div>
+    
     <!-- CoreUI and necessary plugins-->
     <script src="../static/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <script src="../static/vendors/simplebar/js/simplebar.min.js"></script>
-    <!-- Plugins and scripts required by this view-->
-    <script src="../static/vendors/@coreui/utils/js/coreui-utils.js"></script>
-    <script src="../static/js/colors.js"></script>
     <script src="https://kit.fontawesome.com/fe0c06db7b.js" crossorigin="anonymous"></script>
 
+   
+
   </body>
+  
 </html>

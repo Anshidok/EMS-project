@@ -1,0 +1,84 @@
+<html lang="en">
+  <head>
+ 
+    <!-- Vendors styles-->
+    <link rel="stylesheet" href="../static/vendors/simplebar/css/simplebar.css">
+    <link rel="stylesheet" href="../static/css/vendors/simplebar.css">
+    <!-- Main styles for this application-->
+    <link href="../static/css/style.css" rel="stylesheet">
+    <title>EMS | ADMIN</title>
+
+ 
+  </head>
+  <body>
+    <div class="wrapper d-flex flex-column min-vh-100 bg-light">
+
+      <section>
+        <div class="container">
+          <div class="row">
+              <!-- basic form start -->
+               <form method="post" action="/Edit" enctype="multipart/form-data">
+              <div class="col-12" >
+                  <div class="card divcenter"  style="width: 48em;">
+                      <div class="card-body">
+                          <h4 class="header-title">Update Venue Account</h4>
+
+
+                              <div class="row form-group">
+                                  <div class="col-md-3 my-auto">
+                                  <label >Username</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                  <input type="text" class="form-control"  name="textfield1" required>
+                                 
+                                  </div>
+                              </div>
+
+                              <div class="row form-group mt-3">
+                                  <div class="col-md-3 my-auto">
+                                      <label >Password</label>
+                                      </div>
+                                      <div class="col-md-8">
+                                      <input type="password" class="form-control" name="textfield2" required>
+                                      </div>
+                              </div>
+
+                              <div class="row form-group mt-3">
+                                  <div class="col-md-3 my-auto">
+                                  <label >Login Type</label>
+                                  </div>
+                                  <div class="col-md-8">
+                                  <input type="text" class="form-control" name="textfield3" value="venue" required>
+                                  </div>
+                              </div>
+                              <div >
+                                <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Update" name="submit">
+                              </div>                                                                              
+                      </div>
+                  </div>
+              </div>
+             </form>
+              <!-- basic form end -->
+          </div>
+      </div>
+    </section>
+</div>
+
+
+
+
+
+
+
+
+   
+    <!-- CoreUI and necessary plugins-->
+    <script src="../static/vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <script src="../static/vendors/simplebar/js/simplebar.min.js"></script>
+    <script src="https://kit.fontawesome.com/fe0c06db7b.js" crossorigin="anonymous"></script>
+
+   
+
+  </body>
+  
+</html>

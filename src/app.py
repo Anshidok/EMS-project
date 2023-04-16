@@ -440,13 +440,15 @@ def smail():
         message = request.form['message']
     msg = Message("Hai" + name + " Thank you for contacting us.", recipients=[email])
     msg.body = message
+    
     mail.send(msg)
-
     qry = "INSERT INTO contact VALUES(NULL,%s,%s,%s,%s,%s)"
     val = (session['lid'], name, email, subject, message)
     res = iud(qry, val)
-
     return '''<script> alert('Your Message Sended Successfully');window.location="/contact"</script>'''
+    # else:
+    #     return '''<script> alert('error...! Check your internet connection');window.location="/contact"</script>'''
+
 
 
 # ------------------------------------------------------------------------
@@ -487,17 +489,12 @@ def deleteUser():
 @app.route("/venuecheck", methods=['post', 'get'])
 def hallcheck():
     bdate = request.form['checkdate']
-    # bdate="{'date': '"+date+"'}"
-    # {'date': '04/01/2023'}
-
-    # id=session['lid']
     qry = "SELECT date FROM bookings where date = %s"
     val = (bdate)
     res = selectone(qry, val)
 
     if res:
         return f'''<script> alert('This Date is NOT AVAILABLE');window.location.href="{request.referrer}"</script>'''
-
     else:
         return f'''<script> alert('In This Date is AVAILABLE');window.location.href="{request.referrer}"</script>'''
 
@@ -646,25 +643,28 @@ def booking():
         place = request.form['place']
         date = request.form['date']
 
+    # bdate = request.form['checkdate']
+    qry = "SELECT date FROM bookings where date = %s"
+    val = (date)
+    res = selectone(qry, val)
+    print(res)
+    if res:
+        return '''<script> alert('Alredy Booked By Someone !.\nchoose another date');window.location.href="/bookingdetails"</script>'''
+    else:
+        qry = "INSERT INTO bookings VALUES(NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,'Pending',CURDATE())"
+        val = (session['lid'],session['addid'],session['hid'],name,phone,add,email,place,date)
+        iud(qry,val)
+        return '''<script> alert('Succesfully booked');window.location="/bookingdetails"</script>'''
+   
     # message="Thank you for booking our greate venue."
     # msg = Message("Hai" + name , recipients=[email])
     # msg.body = message
     # mail.send(msg)
-    print(session['lid'])
-    print(session['addid'])
-    print(session['hid'])
-    qry = "INSERT INTO bookings VALUES(NULL,%s,%s,%s,%s,%s,%s,%s,%s,%s,'Pending',CURDATE())"
-    val = (session['lid'],session['addid'],session['hid'],name,phone,add,email,place,date)
-    iud(qry,val)
-
-    return '''<script> alert('Succesfully booked');window.location="/bookingdetails"</script>'''
 # ------------------------------------------------------------------------
 # calling thIS function to aprove booking in venue admin section
 @app.route("/aprove", methods=['post', 'get'])
 def aprove():
     id = request.args.get('ID')
-
-
     qry = "update bookings  set `status`='Aprove' where bkid=%s"
     val = (id)
     res=iud(qry,val)
@@ -690,7 +690,7 @@ def aprove():
 def reject():
     id = request.args.get('ID')
 
-    qry = "update bookings  set `status`='reject' where bkid=%s"
+    qry = "update bookings  set `status`='Reject' where bkid=%s"
     val = (id)
     res=iud(qry,val)
     qry1 = "SELECT * FROM bookings WHERE bkid=%s"
@@ -700,23 +700,94 @@ def reject():
     if res is None:
      return '''<script> alert('not REJECTED');window.location="/venuebookings"</script>'''
     else:
-     message=f"Your booking has been Rejected...!.\n\n If any enqury please contact this us......Thank you for everything"
+     message=f"Your booking has been Rejected...!.\n\n If any enquery please contact this us......Thank you for everything"
      msg = Message("Hai..."+res1['cname'] , recipients=[res1['cemail']])
      msg.body = message
      mail.send(msg)
      return '''<script> alert('REJECTED');window.location="/venuebookings"</script>'''
+# ------------------------------------------------------------------------
+# show all the venue account in admin page
+@app.route("/addvenueuser", methods=['post', 'get'])
+def addvenueuser():
+    
+    qry = "select * FROM `login` WHERE `type`='venue'"
+    res=selectall(qry)
+    print(res)
+    return render_template("Admin-adduser.html",val=res)
+
+# ------------------------------------------------------------------------
+# add venue user account and details in admin page
+@app.route("/addvenueuseracc", methods=['post', 'get'])
+def addvenueuseracc():
+    if request.method == "POST":
+        user = request.form['textfield1']
+        passw = request.form['textfield2']
+        type = request.form['textfield3']
+
+    # message="Thank you for booking our greate venue."
+    # msg = Message("Hai" + name , recipients=[email])
+    # msg.body = message
+    # mail.send(msg)
+
+    qry = "INSERT INTO login VALUES(NULL,%s,%s,%s)"
+    val = (user,passw,type)
+    res = iud(qry,val)
+    if res:
+        return '''<script> alert('Added');window.location="/addvenueuser"</script>'''
+    else:
+        return '''<script> alert('Not Added!');window.location="/addvenueuser"</script>'''
+# ------------------------------------------------------------------------
+# edit venue account  in admin panel
+# calling update function in admin panel
+@app.route("/Edit", methods=['post', 'get'])  # edit button action in admin panel
+def Edit():
+    id = request.args.get('ID')
+    user = request.form['textfield1']
+    passw = request.form['textfield2']
+    type = request.form['textfield3']
+
+    qry = "UPDATE `login` SET `username`=%s,`password`=%s where lid=%s"
+    val = (user,passw,id)
+    res = iud(qry,val)
+    if res:
+        return '''<script> alert('data Updated');window.location="/addvenueuser"</script>'''
+    else:
+        return '''<script> alert('No data Updated!');window.location="/addvenueuser"</script>'''
+ # ------------------------------------------------------------------------
+# deleting venue account in admin panel
+@app.route("/Delete", methods=['post', 'get'])
+def Delete():
+    id = request.args.get('ID')
+    qry = "DELETE FROM `login` WHERE `lid`=%s"
+    val = (id)
+    iud(qry,val)
+    
+
+    return '''<script>alert("Deleted successfully.");window.location="/addvenueuser"</script>'''
+
 
 # ------------------------------------------------------------------------
 # calling payment page in venue admin section
 @app.route("/venuepayment", methods=['post', 'get'])
 def venuepayment():
-  
-
     qry = ""
     val = ()
     iud(qry,val)
 
     return render_template("venue_payments.html")
+
+@app.route("/show", methods=['post', 'get'])
+def show():
+    return render_template("Admin-update.html")
+
+
+
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
