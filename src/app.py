@@ -24,8 +24,8 @@ mail = Mail(app)
 # calling login page
 @app.route("/", methods=['get', 'post'])
 def main():
-    return '''<script>window.location="/l"</script>'''
-    # return '''<script>window.location="/userh"</script>'''
+    #return '''<script>window.location="/l"</script>'''
+     return '''<script>window.location="/userh"</script>'''
     # return render_template("venue_addvenue.html")
 
 
@@ -55,6 +55,12 @@ def reg():
 @app.route("/addcenter", methods=['post', 'get'])
 def addcenter():
     return render_template("Admin-addcenter.html")
+# ------------------------------------------------------------------------
+# calling change pass  page
+@app.route("/changepassw", methods=['post', 'get'])
+def changepassw():
+    return render_template("changepass.html")
+
 
 
 # ------------------------------------------------------------------------
@@ -75,7 +81,11 @@ def addeventsp():
 @app.route("/userh", methods=['post', 'get'])
 def userh():
     return render_template("user-index.html")
-
+# ------------------------------------------------------------------------
+# calling contact page
+@app.route("/contact", methods=['post', 'get'])
+def contact():
+        return render_template("user-contact.html")
 
 # ------------------------------------------------------------------------
 # calling userdash  page
@@ -88,6 +98,11 @@ def userdash():
 @app.route("/venueadd", methods=['post', 'get'])
 def venueadd():
     return render_template("venue_addvenue.html")
+# ------------------------------------------------------------------------
+# calling add payment page in venueadmin page
+@app.route("/addpay", methods=['post', 'get'])
+def addpay():
+    return render_template("venue_addpayment.html")
 
 # ------------------------------------------------------------------------
 # calling veue add venue page in venueadmin page
@@ -132,21 +147,12 @@ def venueh():
     
     return render_template("venue_index.html",val=res,val1=res1,val2=res2,val3=res3,val4=res2)
 
-# ------------------------------------------------------------------------
-# calling contact page
-@app.route("/contact", methods=['post', 'get'])
-def contact():
-    if not session.get('logged_in'):
-        return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
-    else:
-        return render_template("user-contact.html")
-
-
 
 # ------------------------------------------------------------------------
 # calling bookings page in venueadmin section
 @app.route("/venuebookings", methods=['post', 'get'])
 def venuebookings():
+
     id = session['lid']
     qry = "SELECT *  FROM `bookings` WHERE venueid=%s"
     val = (id)
@@ -198,7 +204,7 @@ def editvenuepage():
 def viewVenues():
     qry = "SELECT * FROM halls"
     res = selectall(qry)
-    
+    print(res)
     return render_template("Admin-viewVenues.html", val=res)
 
 
@@ -232,15 +238,36 @@ def customerlist():
     res = selectall(qry)
 
     return render_template("Admin-contactlist.html", val=res)
+# ------------------------------------------------------------------------
+# calling contact list page and show all the enquiries users
+@app.route("/payment", methods=['post', 'get'])
+def payment():
+    if session.get('hid') is not None:
+        # id=session['lid']
+        # qry = "select * FROM `bookings` WHERE lid=%s"
+        # val1=(id)
+        # res1 = selectone(qry,val1)
+        # print(res1['venueid'])
+
+
+        id=session['hid']
+        qry = "SELECT * FROM paymentd where hid=%s"
+        val=(id)
+        res = selectone(qry,val)
+        # print(res)
+        return render_template("payment.html",val1=res)
+    else:
+        return '''<script>alert('You have not made a booking yet!');window.location="/userevetns"</script>'''
+
 
 
 # ------------------------------------------------------------------------
 # calling allhalls  page
 @app.route("/allhalls", methods=['post', 'get'])
 def allhalls():
-    if not session.get('logged_in'):
-        return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
-    else:
+    # if not session.get('logged_in'):
+    #     return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
+    # else:
         qry = "SELECT * FROM halls"
         res = selectall(qry)
         return render_template("Venues.html", val=res)
@@ -251,9 +278,9 @@ def allhalls():
 # calling user-events  page
 @app.route("/userevetns", methods=['post', 'get'])
 def userevetns():
-    if not session.get('logged_in'):
-        return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
-    else:
+    # if not session.get('logged_in'):
+    #     return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
+    # else:
         qry = "SELECT * FROM events"
         res = selectall(qry)
         return render_template("user-events.html", val=res)
@@ -273,12 +300,15 @@ def customerslist():
 # calling eventcustomize page
 @app.route("/customize", methods=['post', 'get'])
 def customize():
-    id = request.args.get('ID')
-    session['eventid'] = id
-    qry = "SELECT * FROM `events` WHERE eventid=%s"
-    val = (id)
-    res = selectone(qry, val)
-    return render_template("user-eventcustomize.html", val=res)
+    if not session.get('logged_in'):
+        return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
+    else:
+        id = request.args.get('ID')
+        session['eventid'] = id
+        qry = "SELECT * FROM `events` WHERE eventid=%s"
+        val = (id)
+        res = selectone(qry, val)
+        return render_template("user-eventcustomize.html", val=res)
 
 
 # ------------------------------------------------------------------------
@@ -417,16 +447,19 @@ def insert():
 # calling the more info page
 @app.route("/moreinfo", methods=['post', 'get'])
 def moreinfo():
-    id = request.args.get('id')
-    session['hid'] = id
+    if not session.get('logged_in'):
+        return '''<script>alert('You Are Not Logged In Yet!');window.location="/l"</script>'''
+    else:
+        id = request.args.get('id')
+        session['hid'] = id
 
-    qry = "SELECT * FROM halls WHERE hid=%s"
+        qry = "SELECT * FROM halls WHERE hid=%s"
 
-    val = (id)
-    res = selectone(qry, val)
-    session['addid'] = res['addid']
-    # return render_template("user-moreinfo.html", vall=res)
-    return render_template("reservation.html", vall=res)
+        val = (id)
+        res = selectone(qry, val)
+        session['addid'] = res['addid']
+        # return render_template("user-moreinfo.html", vall=res)
+        return render_template("reservation.html", vall=res)
 
 
 # ------------------------------------------------------------------------
@@ -467,6 +500,27 @@ def addevents():
     res = iud(qry, val)
 
     return '''<script> alert('Event Added Successfully');window.location="/addeventsp"</script>'''
+# ------------------------------------------------------------------------
+# add payment details to database by venue-admin
+@app.route("/addpaydetials", methods=['post', 'get'])
+def addpaydetials():
+    upid = request.form['textfield1']
+    qr = request.files['files']
+
+    id=session['lid']
+    qry1= "SELECT * FROM halls WHERE `addid`=%s"
+    val=(id)
+    res1=selectone(qry1,val)
+
+
+    fn = datetime.now().strftime("%Y%m%d%H%M%S") + ".jpg"
+    qr.save("static/images/payment/" + fn)
+    
+    qry = "INSERT INTO paymentd VALUES(%s,%s,%s,%s)"
+    val = (id,res1['hid'],upid, fn)
+    iud(qry, val)
+
+    return '''<script> alert('Added ');window.location="/addpay"</script>'''
 
 
 # ------------------------------------------------------------------------
@@ -567,7 +621,6 @@ def editevent():
     val = (eventtype, description, fn, session['eventid'])
     res = iud(qry, val)
     return '''<script> alert('data Updated');window.location="/viewEvents"</script>'''
-
 
 # ------------------------------------------------------------------------
 # inserting event_customize details into databese 
@@ -767,6 +820,29 @@ def Delete():
 
 
 # ------------------------------------------------------------------------
+#action to change password
+@app.route("/changepass", methods=['post', 'get'])
+def changepass():
+
+    name = request.form['name']
+    email = request.form['email']
+    password = request.form['password']
+    
+    id=session['lid']
+    print(id)
+
+    qry = "UPDATE login SET password=%s where `lid`=%s"
+    val = (password,session['lid'])
+    res=iud(qry, val)
+
+    qry = "UPDATE `signup` SET `email`=%s where lid=%s"
+    val = (email,session['lid'])
+    iud(qry, val)
+    # if res:
+    return '''<script> alert('data Updated');window.location="/changepassw"</script>'''
+    # else:
+    #     return '''<script> alert('error');window.location="/changepassw"</script>'''
+# ------------------------------------------------------------------------
 # calling payment page in venue admin section
 @app.route("/venuepayment", methods=['post', 'get'])
 def venuepayment():
@@ -775,11 +851,39 @@ def venuepayment():
     iud(qry,val)
 
     return render_template("venue_payments.html")
-
+# ------------------------------------------------------------------------
 @app.route("/show", methods=['post', 'get'])
 def show():
     return render_template("Admin-update.html")
 
+# ------------------------------------------------------------------------
+# inserting UPI ref details into databese 
+@app.route("/payconfirm", methods=['post', 'get'])
+def payconfirm():
+    
+    id=session['lid']
+    qry = "select * FROM `bookings` WHERE lid=%s"
+    val1=(id)
+    res1 = selectone(qry,val1)
+    print(res1['venueid'])
+
+    upi = request.form['upi']
+    qry = "INSERT INTO payconfirm VALUES(%s,%s,%s,%s)"
+    val = (res1['bkid'],session['lid'],res1['venueid'],upi)
+    iud(qry, val)
+    return '''<script> alert('Successfully Placed Your Order');window.location="/payment"</script>'''
+# ------------------------------------------------------------------------
+# show all the payments upi ref in venue-admin page
+@app.route("/venueconfirm", methods=['post', 'get'])
+def venueconfirm():
+    
+    id=session['lid']
+    qry = "select * FROM `bookings` WHERE venueid=%s"
+    res1 = selectall2(qry,id)
+    qry = "select * FROM `payconfirm` WHERE addid=%s"
+    res = selectall2(qry,id)
+
+    return render_template("venue_confirm.html",val=res,val1=res1)
 
 
 

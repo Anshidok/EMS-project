@@ -1,7 +1,7 @@
-body{
-  
-  height: 100vh;justify-content: center;align-items: center;display: flex;
-  background-color: #eee
+
+
+.bodyy{
+  margin:  auto 0 auto  0;
 }
   .launch{height: 50px}
   .close{font-size: 21px;cursor: pointer}
@@ -28,7 +28,9 @@ body{
 
       
 
-
+.divcenter{
+          margin:  0 auto 0 auto ;
+  }
 body {
   font-family: "Roboto", sans-serif;
   background-color: #fff;
