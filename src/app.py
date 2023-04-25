@@ -80,7 +80,8 @@ def addeventsp():
 # calling user home page
 @app.route("/userh", methods=['post', 'get'])
 def userh():
-    return render_template("user-index.html")
+    # return render_template("user-index.html")
+    return render_template("index.html")
 # ------------------------------------------------------------------------
 # calling contact page
 @app.route("/contact", methods=['post', 'get'])
@@ -843,15 +844,6 @@ def changepass():
     # else:
     #     return '''<script> alert('error');window.location="/changepassw"</script>'''
 # ------------------------------------------------------------------------
-# calling payment page in venue admin section
-@app.route("/venuepayment", methods=['post', 'get'])
-def venuepayment():
-    qry = ""
-    val = ()
-    iud(qry,val)
-
-    return render_template("venue_payments.html")
-# ------------------------------------------------------------------------
 @app.route("/show", methods=['post', 'get'])
 def show():
     return render_template("Admin-update.html")
@@ -860,18 +852,32 @@ def show():
 # inserting UPI ref details into databese 
 @app.route("/payconfirm", methods=['post', 'get'])
 def payconfirm():
-    
-    id=session['lid']
-    qry = "select * FROM `bookings` WHERE lid=%s"
-    val1=(id)
-    res1 = selectone(qry,val1)
-    print(res1['venueid'])
-
     upi = request.form['upi']
-    qry = "INSERT INTO payconfirm VALUES(%s,%s,%s,%s)"
-    val = (res1['bkid'],session['lid'],res1['venueid'],upi)
-    iud(qry, val)
-    return '''<script> alert('Successfully Placed Your Order');window.location="/payment"</script>'''
+
+    id=session['lid']
+    qry = "select * FROM `payconfirm` WHERE upiref=%s"
+    val=(upi)
+    res = selectone(qry,val)
+
+    if res:
+        return '''<script> alert('Invalid UPI Ref');window.location="/payment"</script>'''
+    else:
+
+        id=session['lid']
+        qry = "select * FROM `bookings` WHERE lid=%s"
+        val1=(id)
+        res1 = selectone(qry,val1)
+        print(res1['venueid'])
+
+        qry = "INSERT INTO payconfirm VALUES(%s,%s,%s,%s,%s,%s)"
+        val = (res1['bkid'],session['lid'],res1['cname'],res1['cphone'],res1['venueid'],upi)
+        iud(qry, val)
+
+        message="Thank you for choosing Us.\nyour Payment will be verified within few minutes"
+        msg = Message("Hai" +" "+ res1['cname'] , recipients=[res1['cemail']])
+        msg.body = message
+        mail.send(msg)
+        return '''<script> alert('Successfully Placed Your Order');window.location="/payment"</script>'''
 # ------------------------------------------------------------------------
 # show all the payments upi ref in venue-admin page
 @app.route("/venueconfirm", methods=['post', 'get'])

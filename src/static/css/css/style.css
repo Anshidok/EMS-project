@@ -5,7 +5,7 @@
 }
   .launch{height: 50px}
   .close{font-size: 21px;cursor: pointer}
-  .modal-body{height: 450px}
+  .modal-body{height: 500px}
   .nav-tabs{border:none !important}
   .nav-tabs .nav-link.active{color: #495057;background-color: #fff;
     border-color: #ffffff #ffffff #fff;border-top: 3px solid blue !important}

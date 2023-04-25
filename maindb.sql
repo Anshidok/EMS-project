@@ -40,10 +40,10 @@ CREATE TABLE `bookings` (
 
 insert  into `bookings`(`bkid`,`lid`,`venueid`,`hid`,`cname`,`cphone`,`caddress`,`cemail`,`cplace`,`date`,`status`,`curdate`) values 
 (1,6,9,2,'sinan',999507575,NULL,'oksinan999@gmail.com','kavumpuram','03/31/2023','Pending',NULL),
-(3,4,9,1,'Muhammed Anshid. OK',7034283888,'Oravakkottil (H),','anshid283@gmail.com','kavumpuram','04/02/2023','Pending','2023-04-02'),
+(3,4,9,1,'Muhammed Anshid. OK',7034283888,'Oravakkottil (H),','anshid283@gmail.com','kavumpuram','04/02/2023','Aprove','2023-04-02'),
 (4,8,9,1,'Muhammed',7034283888,'Oravakkottil (H),','anshid283@gmail.com','valancheryuuuuu','04/06/2023','Pending','2023-04-06'),
 (5,4,9,1,'OK',7034283888,'Oravakkottil (H),','anshid283@gmail.com','valanchery','04/06/2023','Pending','2023-04-15'),
-(6,9,9,1,'K',7034283888,'Oravakkottil (H),','anshid283@gmail.com','valancheryuuuuu','04/22/2023','Pending','2023-04-15');
+(6,9,9,1,'K',7034283888,'Oravakkottil (H),','anshid283@gmail.com','valancheryuuuuu','04/22/2023','Reject','2023-04-15');
 
 /*Table structure for table `contact` */
 
@@ -162,7 +162,7 @@ CREATE TABLE `login` (
   `password` varchar(50) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`lid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 /*Data for the table `login` */
 
@@ -170,9 +170,44 @@ insert  into `login`(`lid`,`username`,`password`,`type`) values
 (1,'admin','123','admin'),
 (4,'anshid','123','user'),
 (6,'jasi','123','user'),
-(8,'anshi','123','user'),
-(9,'vn1','1234','venue'),
-(11,'vn2','1234','venue');
+(8,'anshi','111','user'),
+(9,'vn1','1234','venue');
+
+/*Table structure for table `payconfirm` */
+
+DROP TABLE IF EXISTS `payconfirm`;
+
+CREATE TABLE `payconfirm` (
+  `bkid` int(11) DEFAULT NULL,
+  `lid` int(11) DEFAULT NULL,
+  `name` varchar(30) DEFAULT NULL,
+  `phone` int(20) DEFAULT NULL,
+  `addid` int(11) DEFAULT NULL,
+  `upiref` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `payconfirm` */
+
+insert  into `payconfirm`(`bkid`,`lid`,`name`,`phone`,`addid`,`upiref`) values 
+(3,4,'Muhammed Anshid. OK',2147483647,9,'123456789000'),
+(3,4,'Muhammed Anshid. OK',2147483647,9,'123456789000');
+
+/*Table structure for table `paymentd` */
+
+DROP TABLE IF EXISTS `paymentd`;
+
+CREATE TABLE `paymentd` (
+  `lid` int(11) DEFAULT NULL,
+  `hid` int(11) DEFAULT NULL,
+  `upid` varchar(50) DEFAULT NULL,
+  `qrcode` varchar(50) DEFAULT NULL,
+  `advance` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `paymentd` */
+
+insert  into `paymentd`(`lid`,`hid`,`upid`,`qrcode`,`advance`) values 
+(9,1,'parakkal@okhdfcbank','20230420171044.jpg',NULL);
 
 /*Table structure for table `signup` */
 
@@ -190,9 +225,9 @@ CREATE TABLE `signup` (
 /*Data for the table `signup` */
 
 insert  into `signup`(`uid`,`lid`,`name`,`phone`,`email`) values 
-(3,4,'anshid',7034283888,'anshid283@gmail.com'),
-(5,6,'jasi',7034283888,'mujijasi1@gmail.com'),
-(7,8,'anshid',7034283888,'1234567890');
+(3,4,'anshid',7034283888,'email@gmail.com'),
+(5,6,'jasi',7034283888,'email@gmail.com'),
+(7,8,'anshid',7034283888,'283@gmail.com');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

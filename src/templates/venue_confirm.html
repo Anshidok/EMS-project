@@ -56,18 +56,19 @@
                             <a class="nav-link" href="/venueupdate">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Update
-                            </a>  
-                            <a class="nav-link" href="/venuebookings">
-                                <div class="sb-nav-link-icon"><i class="fas fa-Booking"></i></div>
-                                Bookings
                             </a>
                             <a class="nav-link" href="/addpay">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Payment Details
                             </a>
+                            <a class="nav-link" href="/venuebookings">
+                                <div class="sb-nav-link-icon"><i class="fas fa-Booking"></i></div>
+                                Bookings
+                            </a>
+                            
                             <a class="nav-link" href="/venueconfirm">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Payment Confirmation
+                                 Confirmation
                             </a>
                             <a class="nav-link" href="/logout">
                                 <div class="sb-nav-link-icon"><i class="fas fa-logout"></i></div>
@@ -135,8 +136,8 @@
                           <tr>
                             <td>{{i['bkid']}}  </td>
                             <td>{{i['upiref']}}  </td>
-                            <td>{{i['bkid']}}  </td>
-                            <td>{{i['bkid']}}  </td>
+                            <td>{{i['name']}}  </td>
+                            <td>{{i['phone']}}  </td>
                             <td><a href="/aprove?ID={{i['bkid']}}"><input type="button" value="Approve" class="btn btn-success"></td></a>
                             <td><a href="/reject?ID={{i['bkid']}}"><input type="button" value="Reject" class="btn btn-danger"></td></a>
                           </tr>   
