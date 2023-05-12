@@ -145,57 +145,55 @@
       </header>
 
 
-      <section>
-        <div class="container">
-          <div class="row">    
-            
-            
-              <table class="table col-md-12 col-6" align="center" style="width: 45em;" >
-                <thead class="table-dark">
-                    <th>Cid</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Subject</th>
-                    <th>Message</th>
-                    <th>Replay</th>
-                    <th>Delete</th>
+<section>
+  <div class="container">
+    <div class="row">       
+        <table class="table col-md-12 col-6" align="center" 
+        style="width: 45em;" >
+          <thead class="table-dark">
+              <th>Cid</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Replay</th>
+              <th>Delete</th>
 
-                </thead>
-                <!--val from /contactlist or contact table -->
-                {% for i in val %} 
-                <tbody> 
-                  
-                  <tr>
-                    <td>{{i['cid']}}</td>
-                    <td>{{i['name']}}</td>
-                    <td>{{i['email']}}</td>
-                    <td>{{i['subject']}}</td>
-                    <td>{{i['message']}}</td>
+          </thead>
+          <!--val from /contactlist or contact table -->
+          {% for i in val %} 
+          <tbody> 
+            
+            <tr>
+              <td>{{i['cid']}}</td>
+              <td>{{i['name']}}</td>
+              <td>{{i['email']}}</td>
+              <td>{{i['subject']}}</td>
+              <td>{{i['message']}}</td>
 
-                  </tr>
-                  <tr>
-                    <form method="post" action="/replay?ID={{i['cid']}} ">
-                        <td colspan="5"align="right">
-                          <textarea  class="form-controls" name="re" style="width: 100%; height: 4em; " required></textarea>
-                        </td>
-                        <td >
-                          <input type="submit" value="Replay" class="form-controls " >
-                        </td>
-                    </form>
-                    <td>
-                      <form method="post" action="/deletemess?ID={{i['cid']}}">
-                          <input type="submit" value="Delete" class="form-controls " >
-                      </form>
-                    </td>
-                  </tr>
-                </tbody>
-                {% endfor %}
-              </table>
-            
-            
-          </div>
-        </div>
-      </section>
+            </tr>
+            <tr>
+              <form method="post" action="/replay?ID={{i['cid']}} ">
+                  <td colspan="5"align="right">
+                    <textarea  class="form-controls" name="re" 
+                    style="width: 100%; height: 4em; " required></textarea>
+                  </td>
+                  <td >
+                    <input type="submit" value="Replay" class="form-controls " >
+                  </td>
+              </form>
+              <td>
+                <form method="post" action="/deletemess?ID={{i['cid']}}">
+                    <input type="submit" value="Delete" class="form-controls " >
+                </form>
+              </td>
+            </tr>
+          </tbody>
+          {% endfor %}
+        </table>         
+    </div>
+  </div>
+</section>
 
 
 

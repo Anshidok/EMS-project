@@ -7,8 +7,22 @@
     <list default="true" id="729213bd-8434-40e1-a0f4-d35dd9f8e9fe" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/static/css/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/css/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/Admin-contactlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Admin-contactlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/Admin-viewVenues.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Admin-viewVenues.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/Venues.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/Venues.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/changepass.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/changepass.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/payment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/payment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/reservation.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/reservation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-allcenters.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-allcenters.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-book.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-book.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-bookings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-eventcustomize.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-eventcustomize.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-events.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/user-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/user-index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/venue_addpayment.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/venue_addpayment.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/venue_addvenue.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/venue_addvenue.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/templates/venue_bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/venue_bookings.html" afterDir="false" />

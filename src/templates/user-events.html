@@ -33,7 +33,6 @@
                               <a class="dropdown-item" href="/changepassw">Change Password</a>                             
                           </div>
                       </li>
-                      <li class="nav-item"><a href="/l" class="nav-link">Login</a></li>
                       <li class="nav-item"><a href="/logout" class="nav-link">logout</a></li>
                   </ul>
               </div>
@@ -43,35 +42,33 @@
     <!-- END nav -->
 	</section>
     
-  <section>
-    <div class="row tm-section-header section-margin-top" style="padding-top:5em; border: none;" >
-      <div class="col-lg-4 col-md-4 col-4"><hr></div>
-      <div align="center"class="col-lg-4 col-md-4 col-4"><h2 class="tm-section-title">Events</h2></div>
-      <div class="col-lg-4 col-md-4 col-4"><hr></div>	
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row">
-                <!--Datas from /userevetns or events table-->
-        {% for i in val %}
-            <div class="card ml-5 mt-5" style="width: 18rem;">
-              <img src="../static/images/event/{{i['image']}}" class="card-img-top" style="margin-top:1em;" >
-              <div class="card-body">
-                <hr>
-                <h5 class="card-title">{{i['eventtype']}}</h5>
-                <p class="card-text">{{i['description']}}</p>
-                <a href="/customize?ID={{i['eventid']}}" class="btn btn-primary">More info</a>
-              </div>
+<section>
+  <div class="row tm-section-header section-margin-top" 
+  style="padding-top:5em; border: none;" >
+    <div class="col-lg-4 col-md-4 col-4"><hr></div>
+    <div align="center"class="col-lg-4 col-md-4 col-4"><h2 
+      class="tm-section-title">Events</h2></div>
+    <div class="col-lg-4 col-md-4 col-4"><hr></div>	
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+              <!--Datas from /userevetns or events table-->
+      {% for i in val %}
+          <div class="card ml-5 mt-5" style="width: 15rem;">
+            <img src="../static/images/event/{{i['image']}}" class="card-img-top" 
+            style="margin-top:1em;" >
+            <div class="card-body"> <hr>         
+              <h5 class="card-title">{{i['eventtype']}}</h5>
+              <!-- <p class="card-text">{{i['description']}}</p> -->
+              <a href="/customize?ID={{i['eventid']}}" class="btn btn-primary">More info</a>
             </div>
-        {% endfor %}
-        
-       
-        
-      </div>
+          </div>
+      {% endfor %}
     </div>
-  </section>
+  </div>
+</section>
 
 
 

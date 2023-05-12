@@ -9,9 +9,8 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
+            <a class="navbar-brand ps-3" href="index.html">Venue Admin</a>
+
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
@@ -75,96 +74,90 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
-                <section>
-                    <div class="container">
-                      <div class="row">
-                          <!-- basic form start -->
-                           <form method="post" action="/updatevenue" enctype="multipart/form-data">
-                          <div class="col-12" >
-                              <div class="card divcenter "  style="width: 48em;">
-                                  <div class="card-body">
-                                      <h4 class="header-title">UPDATE VENUE</h4>
-          
-          
-                                          <div class="row form-group">
-                                              <div class="col-md-3 my-auto">
-                                              <label >Location</label>
-                                              </div>
-                                              <div class="col-md-8">
-                                              <input type="text" class="form-control"name="textfield1" value="{{val['location']}}" >
-                                             
-                                              </div>
-                                          </div>
-          
-                                          <div class="row form-group mt-3">
-                                              <div class="col-md-3 my-auto">
-                                                  <label >Center Name</label>                                    </div>
-                                                  <div class="col-md-8">
-                                                  <input type="text"value="{{val['name']}}"class="form-control"name="textfield2" >
-                                                  </div>
-                                          </div>
-          
-                                          <div class="row form-group mt-3">
-                                              <div class="col-md-3 my-auto">
-                                              <label >Booking Price</label>
-                                              </div>
-                                              <div class="col-md-8">
-                                              <input type="text"value="{{val['bprice']}}"class="form-control"  name="textfield3">
-                                              </div>
-                                          </div>
-          
-                                          <div class="row form-group mt-3">
-                                              <div class="col-md-3 my-auto">
-                                              <label >Contact No</label>
-                                              </div>
-                                              <div class="col-md-8">
-                                              <input type="text"value="{{val['phone']}}"class="form-control" name="textfield4" >
-                                              </div>
-                                          </div>
-          
-          
-                                          <div class="row form-group mt-3">
-                                              <div class="col-md-3 my-auto">
-                                              <label >Email address</label>
-                                              </div>
-                                              <div class="col-md-8">
-                                              <input type="email"value="{{val['email']}}" class="form-control" name="textfield5" >
-                                              </div>
-                                          </div>
-                                          <div class="row form-group mt-3">
-                                            <div class="col-md-3 my-auto">
-                                            <label >UPI address</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                            <input type="text"value="{{val['email']}}" class="form-control" name="textfield6" >
-                                            </div>
-                                        </div>
-                                         
-                                          <div class="row form-group mt-3">
-                                              <div class="col-md-3 my-top">
-                                              <label >Center description</label>
-                                              </div>
-                                              <div class="col-md-8">
-                                                <textarea class="form-control" name="textfield7" style="height: 5em;">{{val['descri']}}</textarea>
-                                              </div>
-                                          </div>
-                                          <div class="row form-group mt-3">
-                                            <div class="col-md-3 my-auto">
-                                            <label >Image</label>
-                                            </div>
-                                            <div class="col-md-8">
-                                            <input type="file" class="form-control"  name="files" multiple>
-                                            </div>
-                                        </div>                                
-                                          <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Update" name="submit">
-                                  </div>
-                              </div>
-                          </div>
-                         </form>
-                          <!-- basic form end -->
-                      </div>
-                  </div>
-                </section>
+<section>
+    <form method="post" action="/updatevenue" enctype="multipart/form-data">
+    <div class="col-12" >
+        <div class="card divcenter "  style="width: 48em;">
+            <div class="card-body">
+                <h4 class="header-title">UPDATE VENUE</h4>
+
+
+                    <div class="row form-group">
+                        <div class="col-md-3 my-auto">
+                        <label >Location</label>
+                        </div>
+                        <div class="col-md-8">
+                        <input type="text" class="form-control"name="textfield1" value="{{val['location']}}" >
+                        
+                        </div>
+                    </div>
+
+                    <div class="row form-group mt-3">
+                        <div class="col-md-3 my-auto">
+                            <label >Center Name</label>                                    </div>
+                            <div class="col-md-8">
+                            <input type="text"value="{{val['name']}}"class="form-control"name="textfield2" >
+                            </div>
+                    </div>
+
+                    <div class="row form-group mt-3">
+                        <div class="col-md-3 my-auto">
+                        <label >Booking Price</label>
+                        </div>
+                        <div class="col-md-8">
+                        <input type="text"value="{{val['bprice']}}"class="form-control"  name="textfield3">
+                        </div>
+                    </div>
+
+                    <div class="row form-group mt-3">
+                        <div class="col-md-3 my-auto">
+                        <label >Contact No</label>
+                        </div>
+                        <div class="col-md-8">
+                        <input type="text"value="{{val['phone']}}"class="form-control" name="textfield4" >
+                        </div>
+                    </div>
+
+
+                    <div class="row form-group mt-3">
+                        <div class="col-md-3 my-auto">
+                        <label >Email address</label>
+                        </div>
+                        <div class="col-md-8">
+                        <input type="email"value="{{val['email']}}" class="form-control" name="textfield5" >
+                        </div>
+                    </div>
+                    <div class="row form-group mt-3">
+                    <div class="col-md-3 my-auto">
+                    <label >UPI address</label>
+                    </div>
+                    <div class="col-md-8">
+                    <input type="text"value="{{val['email']}}" class="form-control" name="textfield6" >
+                    </div>
+                </div>
+                    
+                    <div class="row form-group mt-3">
+                        <div class="col-md-3 my-top">
+                        <label >Center description</label>
+                        </div>
+                        <div class="col-md-8">
+                        <textarea class="form-control" name="textfield7" style="height: 5em;">{{val['descri']}}</textarea>
+                        </div>
+                    </div>
+                    <div class="row form-group mt-3">
+                    <div class="col-md-3 my-auto">
+                    <label >Image</label>
+                    </div>
+                    <div class="col-md-8">
+                    <input type="file" class="form-control"  name="files" multiple>
+                    </div>
+                </div>                                
+                    <input type="submit" class="btn btn-primary mt-4 pr-4 pl-4" value="Update" name="submit">
+            </div>
+        </div>
+    </div>
+    </form>
+</section>
                 
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
